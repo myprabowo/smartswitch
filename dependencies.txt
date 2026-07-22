@@ -1,0 +1,29 @@
+# Project Dependencies & Library Specifications
+
+## Target Board Package
+- Board: esp32 by Espressif Systems
+- Tested Core Version: 2.0.14 or 3.0.x
+- Target Hardware: ESP32-C3 Dev Module / ESP32-C3 Super Mini
+
+## External Third-Party Arduino Libraries
+1. ArduinoJson
+   - Author: Benoit Blanchon
+   - Recommended Version: 6.21.5 or 7.x
+   - Installation: Search "ArduinoJson" in Arduino IDE Library Manager.
+
+2. WiFiManager
+   - Author: tzapu
+   - Recommended Version: 2.0.16-rc.2 or later
+   - Installation: Search "WiFiManager" in Arduino IDE Library Manager.
+
+## Built-In Core ESP32 Libraries (No separate download required)
+- WiFi.h
+- WebServer.h
+- HTTPClient.h
+- WiFiClientSecure.h
+- Preferences.h
+- ESPmDNS.h
+- ArduinoOTA.h
+- esp_system.h
+- esp_task_wdt.h
+- mbedtls/md.h

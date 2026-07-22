@@ -1,0 +1,23 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arduino IDE & ESP32 Build artifacts
+build/
+*.bin
+*.elf
+*.hex
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary scratch & log files
+*.log
