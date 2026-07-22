@@ -9,8 +9,8 @@ Production-grade, commercial-quality Arduino IDE firmware for the **ESP32-C3 Sup
 - **Hardware Target**: ESP32-C3 Super Mini (USB-C powered).
 - **Zero Delay / Non-Blocking**: Built using `millis()` timing, finite state machines, and a task scheduler. No blocking `delay()` calls.
 - **Tuya Cloud OpenAPI v1.0 Integration**: Native HMAC-SHA256 request signing, automatic OAuth token management, expiration tracking, and retries over secure HTTPS.
-- **WiFi Provisioning**: Built-in captive portal (`PumpRemoteSetup`) via `WiFiManager`. No hardcoded credentials required.
-- **Embedded Web Dashboard & Portal**: Dark responsive SPA dashboard available at `http://pumpremote.local` or via IP address.
+- **WiFi Provisioning**: Built-in captive portal (`RemoteSwitchSetup`) via `WiFiManager`. No hardcoded credentials required.
+- **Embedded Web Dashboard & Portal**: Dark responsive SPA dashboard available at `http://remoteswitch.local` or via IP address.
 - **JSON REST API**: Full programmatic control via REST endpoints (`/api/status`, `/api/toggle`, `/api/on`, `/api/off`, `/api/restart`, `/api/config`).
 - **Resilience & Safe Mode**: Task Watchdog Timer (15s timeout), 3-strike crash detector, RAM ring buffer logging (latest 100 entries), self-diagnostics on boot.
 - **Multi-Gesture Button Controller**: Software-debounced multi-gesture handling on GPIO9 (BOOT button).
@@ -90,12 +90,12 @@ Install the following libraries via `Tools -> Manage Libraries`:
 ## WiFi Provisioning & Initial Configuration
 
 1. Power the ESP32-C3 Super Mini via USB-C.
-2. On first boot, the LED will heartbeat and create an AP network named **`PumpRemoteSetup`**.
-3. Connect your mobile phone or computer to **`PumpRemoteSetup`**.
+2. On first boot, the LED will heartbeat and create an AP network named **`RemoteSwitchSetup`**.
+3. Connect your mobile phone or computer to **`RemoteSwitchSetup`**.
 4. The captive portal will open automatically (or navigate to `http://192.168.4.1`).
 5. Select your home/office WiFi network and enter the password.
 6. Once connected, open a browser and visit:
-   - **mDNS**: `http://pumpremote.local`
+   - **mDNS**: `http://remoteswitch.local`
    - **IP Address**: Assigned by your router (visible in Serial Monitor or router client list).
 7. Scroll to the **Configuration Portal** section on the Web Dashboard and enter your `Tuya Access ID`, `Tuya Access Secret`, `Tuya Device ID`, and `Endpoint`. Click **Save & Reboot**.
 
@@ -106,7 +106,7 @@ Install the following libraries via `Tools -> Manage Libraries`:
 All endpoints return JSON responses.
 
 ### `GET /api/status`
-Returns real-time telemetry, pump switch state, RSSI, free memory, and Tuya token condition.
+Returns real-time telemetry, switch state, RSSI, free memory, and Tuya token condition.
 
 ### `GET /api/info`
 Returns hardware architecture, SDK version, flash size, and CPU frequency.
@@ -117,7 +117,7 @@ Returns the latest 100 system log entries stored in RAM.
 ### `POST /api/toggle`
 Toggles switch state.
 ```json
-{ "success": true, "newState": "ON", "message": "Pump toggled to ON" }
+{ "success": true, "newState": "ON", "message": "Switch toggled to ON" }
 ```
 
 ### `POST /api/on`
@@ -140,7 +140,7 @@ Wipes NVS and restarts device in AP Provisioning Mode.
 | :--- | :--- | :--- |
 | **HTTP 401 / Invalid Secret** | Incorrect Tuya Access ID or Secret | Verify credentials in Tuya Developer Console and update via Web Portal. |
 | **Code 1010 / Token Expired** | Expired access token | Token auto-refreshes automatically. Check device system time/NTP. |
-| **Captive Portal does not open** | Mobile phone cellular data active | Disable mobile data while connected to `PumpRemoteSetup`. Navigate to `192.168.4.1`. |
+| **Captive Portal does not open** | Mobile phone cellular data active | Disable mobile data while connected to `RemoteSwitchSetup`. Navigate to `192.168.4.1`. |
 | **Device Boot Loops** | Corrupted NVS or crash threshold | Hold BOOT button for `> 15 seconds` to trigger Factory Reset. |
 
 ---

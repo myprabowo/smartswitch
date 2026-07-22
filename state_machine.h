@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_STATE_MACHINE_H
-#define PUMP_REMOTE_STATE_MACHINE_H
+#ifndef REMOTE_SWITCH_STATE_MACHINE_H
+#define REMOTE_SWITCH_STATE_MACHINE_H
 
 #include <Arduino.h>
 #include "config.h"
@@ -66,4 +66,4 @@ private:
 
 extern SystemFSM systemFSM;
 
-#endif // PUMP_REMOTE_STATE_MACHINE_H
+#endif // REMOTE_SWITCH_STATE_MACHINE_H

@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_NVS_CONFIG_H
-#define PUMP_REMOTE_NVS_CONFIG_H
+#ifndef REMOTE_SWITCH_NVS_CONFIG_H
+#define REMOTE_SWITCH_NVS_CONFIG_H
 
 #include <Arduino.h>
 #include <Preferences.h>
@@ -102,4 +102,4 @@ private:
 
 extern NVSConfigManager nvsConfigManager;
 
-#endif // PUMP_REMOTE_NVS_CONFIG_H
+#endif // REMOTE_SWITCH_NVS_CONFIG_H

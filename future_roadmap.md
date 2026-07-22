@@ -33,11 +33,11 @@ The current codebase decouples event input (buttons), logic routing (FSM), and t
 
 ### 2. Home Assistant & MQTT Integration
 - **Local MQTT Client**: Integrate `PubSubClient` or `AsyncMqttClient` into `scheduler.cpp`.
-- **Home Assistant Auto-Discovery**: Publish HA discovery JSON payloads (`homeassistant/switch/pumpremote/config`) to allow native integration without Tuya cloud latency.
+- **Home Assistant Auto-Discovery**: Publish HA discovery JSON payloads (`homeassistant/switch/remoteswitch/config`) to allow native integration without Tuya cloud latency.
 
 ### 3. Physical Relay & Sensor Output
 - **Local Relay Driver**: Connect physical relay modules to unused GPIOs (e.g. GPIO2, GPIO3, GPIO4) to allow direct hardware switching during cloud/network outages.
-- **Flow & Pressure Sensors**: Read pulse counters on GPIO pins for water pump volume tracking.
+- **Flow & Energy Sensors**: Read pulse counters or power metering ICs on GPIO pins for switch load tracking.
 
 ### 4. Bluetooth Low Energy (BLE) Provisioning & Local Remote
 - **ESP32-C3 BLE Provider**: Utilize `NimBLE-Arduino` to allow offline phone control via BLE advertising packets.

@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_WEB_SERVER_H
-#define PUMP_REMOTE_WEB_SERVER_H
+#ifndef REMOTE_SWITCH_WEB_SERVER_H
+#define REMOTE_SWITCH_WEB_SERVER_H
 
 #include <Arduino.h>
 #include <WebServer.h>
@@ -34,18 +34,18 @@ public:
     void update();
 
     /**
-     * @brief Sets current cached pump switch state.
+     * @brief Sets current cached switch state.
      */
-    void setCachedPumpState(bool state) { _cachedPumpState = state; }
+    void setCachedSwitchState(bool state) { _cachedSwitchState = state; }
 
     /**
-     * @brief Returns cached pump switch state.
+     * @brief Returns cached switch state.
      */
-    bool getCachedPumpState() const { return _cachedPumpState; }
+    bool getCachedSwitchState() const { return _cachedSwitchState; }
 
 private:
     WebServer _server;
-    bool _cachedPumpState;
+    bool _cachedSwitchState;
 
     void setupRoutes();
     void handleRoot();
@@ -67,4 +67,4 @@ private:
 
 extern EmbeddedWebServer embeddedWebServer;
 
-#endif // PUMP_REMOTE_WEB_SERVER_H
+#endif // REMOTE_SWITCH_WEB_SERVER_H

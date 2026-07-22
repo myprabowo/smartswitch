@@ -6,17 +6,17 @@ This guide provides step-by-step diagnostic procedures for resolving network, ha
 
 ## 1. Network & WiFi Provisioning Issues
 
-### Symptom: `PumpRemoteSetup` AP does not appear on first boot
+### Symptom: `RemoteSwitchSetup` AP does not appear on first boot
 - **Root Cause**: WiFi credentials are already present in flash or ESP32-C3 is stuck in a boot crash loop.
 - **Resolution**:
   1. Open Serial Monitor at `115200` baud.
   2. Press and hold the BOOT button (GPIO9) for **> 15 seconds** until the LED blinks rapidly to trigger a full factory reset.
   3. Alternatively, flash empty memory using `esptool.py --chip esp32c3 erase_flash`.
 
-### Symptom: Captive Portal does not launch after connecting to `PumpRemoteSetup`
+### Symptom: Captive Portal does not launch after connecting to `RemoteSwitchSetup`
 - **Root Cause**: Smartphone cellular data is active and overriding local DNS resolution.
 - **Resolution**:
-  1. Turn off **Cellular / Mobile Data** on your phone while connected to `PumpRemoteSetup`.
+  1. Turn off **Cellular / Mobile Data** on your phone while connected to `RemoteSwitchSetup`.
   2. Open a mobile browser and manually enter `http://192.168.4.1`.
 
 ---
@@ -30,7 +30,7 @@ This guide provides step-by-step diagnostic procedures for resolving network, ha
   2. Go to **Cloud -> Development -> Project Details**.
   3. Copy the exact **Access ID** and **Access Secret**.
   4. Ensure API Service **IoT Core** is enabled under project **API Services**.
-  5. Update credentials via `http://pumpremote.local` configuration portal.
+  5. Update credentials via `http://remoteswitch.local` configuration portal.
 
 ### Symptom: Serial output displays `HTTP Error Code: 401` or `Code 1010: token expired`
 - **Root Cause**: System clock unsynchronized or token expired on Tuya cloud side.

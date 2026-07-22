@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_TUYA_API_H
-#define PUMP_REMOTE_TUYA_API_H
+#ifndef REMOTE_SWITCH_TUYA_API_H
+#define REMOTE_SWITCH_TUYA_API_H
 
 #include <Arduino.h>
 #include <WiFiClientSecure.h>
@@ -98,4 +98,4 @@ private:
 
 extern TuyaApiClient tuyaApiClient;
 
-#endif // PUMP_REMOTE_TUYA_API_H
+#endif // REMOTE_SWITCH_TUYA_API_H

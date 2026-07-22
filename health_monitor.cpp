@@ -111,20 +111,16 @@ void HealthMonitor::runBootDiagnostics() {
 
 void HealthMonitor::update() {
     unsigned long now = millis();
-    if (now - _lastHealthPulseMs >= HEALTH_LOG_INTERVAL_MS) {
-        _lastHealthPulseMs = now;
+    esp_reset_reason_t reason = esp_reset_reason();
+    String healthMsg = "Health Pulse - Free Heap: " + String(ESP.getFreeHeap()) +
+                       " bytes | Min Free Heap: " + String(ESP.getMinFreeHeap()) +
+                       " bytes | RSSI: " + String(customWiFiManager.getRSSI()) + " dBm" +
+                       " | Uptime: " + Utils::formatUptime(now) +
+                       " | Reset Reason: " + Utils::getResetReasonString(reason);
 
-        esp_reset_reason_t reason = esp_reset_reason();
-        String healthMsg = "Health Pulse - Free Heap: " + String(ESP.getFreeHeap()) +
-                           " bytes | Min Free Heap: " + String(ESP.getMinFreeHeap()) +
-                           " bytes | RSSI: " + String(customWiFiManager.getRSSI()) + " dBm" +
-                           " | Uptime: " + Utils::formatUptime(now) +
-                           " | Reset Reason: " + Utils::getResetReasonString(reason);
+    logInfo(healthMsg);
 
-        logInfo(healthMsg);
-
-        if (ESP.getFreeHeap() < 30000) {
-            logWarn("Low Heap Warning! Free memory below 30KB threshold.");
-        }
+    if (ESP.getFreeHeap() < 30000) {
+        logWarn("Low Heap Warning! Free memory below 30KB threshold.");
     }
 }

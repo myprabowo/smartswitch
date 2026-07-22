@@ -10,7 +10,7 @@ This step-by-step walkthrough guides you through configuring the Tuya Developer 
 2. **Create Cloud Project**:
    - Navigate to **Cloud -> Development**.
    - Click **Create Cloud Project**.
-   - Project Name: `Pump Remote Controller`
+   - Project Name: `Remote Switch Controller`
    - Industry: `Smart Home`
    - Data Center: Select your local data center (e.g., *Western America Data Center*).
 3. **Authorize API Services**:
@@ -30,8 +30,8 @@ This step-by-step walkthrough guides you through configuring the Tuya Developer 
 ## Part 2: WiFi Provisioning Walkthrough
 
 1. Apply 5V power to the ESP32-C3 Super Mini via USB-C.
-2. On your smartphone, open WiFi settings and connect to **`PumpRemoteSetup`**.
-3. A captive portal page titled **`PumpRemoteSetup`** will open automatically.
+2. On your smartphone, open WiFi settings and connect to **`RemoteSwitchSetup`**.
+3. A captive portal page titled **`RemoteSwitchSetup`** will open automatically.
 4. Tap **Configure WiFi**.
 5. Select your home 2.4GHz WiFi network, enter the password, and tap **Save**.
 6. The ESP32-C3 Super Mini will connect to your router and display its assigned IP address.
@@ -45,7 +45,7 @@ The firmware includes built-in `ArduinoOTA` support for wireless updates over Wi
 ### Flashing OTA from Arduino IDE
 1. Ensure your computer is connected to the same WiFi network as the ESP32-C3 Super Mini.
 2. Open `main.ino` in Arduino IDE 2.x.
-3. Under **Tools -> Port**, select the network port: `PumpRemote at 192.168.x.x`.
+3. Under **Tools -> Port**, select the network port: `RemoteSwitch at 192.168.x.x`.
 4. Click **Upload**.
 5. When prompted for password, enter default OTA password: `admin123` (or custom password set in `config.h`).
 6. The onboard LED will rapid blink during transfer, and the board will automatically reboot with new code upon completion.

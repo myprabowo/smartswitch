@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_SCHEDULER_H
-#define PUMP_REMOTE_SCHEDULER_H
+#ifndef REMOTE_SWITCH_SCHEDULER_H
+#define REMOTE_SWITCH_SCHEDULER_H
 
 #include <Arduino.h>
 #include <esp_task_wdt.h>
@@ -50,4 +50,4 @@ private:
 
 extern TaskScheduler scheduler;
 
-#endif // PUMP_REMOTE_SCHEDULER_H
+#endif // REMOTE_SWITCH_SCHEDULER_H

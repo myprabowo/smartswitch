@@ -10,7 +10,7 @@
 
 EmbeddedWebServer embeddedWebServer;
 
-EmbeddedWebServer::EmbeddedWebServer() : _server(80), _cachedPumpState(false) {}
+EmbeddedWebServer::EmbeddedWebServer() : _server(80), _cachedSwitchState(false) {}
 
 void EmbeddedWebServer::begin() {
     setupRoutes();
@@ -76,8 +76,8 @@ void EmbeddedWebServer::handleApiStatus() {
     doc["firmware"]       = FIRMWARE_VERSION;
     doc["uptime"]         = Utils::formatUptime(millis());
     doc["uptimeMs"]       = millis();
-    doc["pumpState"]      = _cachedPumpState ? "ON" : "OFF";
-    doc["pumpStateBool"]  = _cachedPumpState;
+    doc["switchState"]    = _cachedSwitchState ? "ON" : "OFF";
+    doc["switchStateBool"]= _cachedSwitchState;
     doc["wifiRssi"]       = customWiFiManager.getRSSI();
     doc["ipAddress"]      = customWiFiManager.getIPAddress();
     doc["macAddress"]     = customWiFiManager.getMACAddress();
@@ -118,10 +118,10 @@ void EmbeddedWebServer::handleApiToggle() {
 
     StaticJsonDocument<256> doc;
     if (res == TUYA_SUCCESS) {
-        _cachedPumpState = newState;
+        _cachedSwitchState = newState;
         doc["success"] = true;
         doc["newState"] = newState ? "ON" : "OFF";
-        doc["message"] = "Pump toggled to " + String(newState ? "ON" : "OFF");
+        doc["message"] = "Switch toggled to " + String(newState ? "ON" : "OFF");
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
     } else {
         doc["success"] = false;
@@ -140,10 +140,10 @@ void EmbeddedWebServer::handleApiOn() {
 
     StaticJsonDocument<256> doc;
     if (res == TUYA_SUCCESS) {
-        _cachedPumpState = true;
+        _cachedSwitchState = true;
         doc["success"] = true;
         doc["newState"] = "ON";
-        doc["message"] = "Pump turned ON successfully";
+        doc["message"] = "Switch turned ON successfully";
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
     } else {
         doc["success"] = false;
@@ -162,10 +162,10 @@ void EmbeddedWebServer::handleApiOff() {
 
     StaticJsonDocument<256> doc;
     if (res == TUYA_SUCCESS) {
-        _cachedPumpState = false;
+        _cachedSwitchState = false;
         doc["success"] = true;
         doc["newState"] = "OFF";
-        doc["message"] = "Pump turned OFF successfully";
+        doc["message"] = "Switch turned OFF successfully";
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
     } else {
         doc["success"] = false;
@@ -227,7 +227,7 @@ String EmbeddedWebServer::getDashboardHTML() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PumpRemote Dashboard</title>
+    <title>RemoteSwitch Dashboard</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -264,8 +264,8 @@ String EmbeddedWebServer::getDashboardHTML() {
 <body>
     <div class="header">
         <div>
-            <h1 id="devName">Pump Remote Controller</h1>
-            <span class="info-label" id="hostnameTag">pumpremote.local</span>
+            <h1 id="devName">Remote Switch Controller</h1>
+            <span class="info-label" id="hostnameTag">remoteswitch.local</span>
         </div>
         <span class="badge" id="firmwareTag">v1.0.0</span>
     </div>
@@ -273,12 +273,12 @@ String EmbeddedWebServer::getDashboardHTML() {
     <div class="grid">
         <!-- Control Card -->
         <div class="card">
-            <h3>Pump Switch Control</h3>
-            <div id="pumpStateDisplay" class="status-val off">UNKNOWN</div>
+            <h3>Switch Control</h3>
+            <div id="switchStateDisplay" class="status-val off">UNKNOWN</div>
             <div class="btn-group">
-                <button class="btn-success" onclick="controlPump('on')">TURN ON</button>
-                <button class="btn-danger" onclick="controlPump('off')">TURN OFF</button>
-                <button onclick="controlPump('toggle')">TOGGLE</button>
+                <button class="btn-success" onclick="controlSwitch('on')">TURN ON</button>
+                <button class="btn-danger" onclick="controlSwitch('off')">TURN OFF</button>
+                <button onclick="controlSwitch('toggle')">TOGGLE</button>
             </div>
         </div>
 
@@ -346,9 +346,9 @@ String EmbeddedWebServer::getDashboardHTML() {
                 document.getElementById('hostnameTag').innerText = data.hostname + '.local';
                 document.getElementById('firmwareTag').innerText = 'v' + data.firmware;
                 
-                const elem = document.getElementById('pumpStateDisplay');
-                elem.innerText = data.pumpState;
-                elem.className = 'status-val ' + data.pumpState.toLowerCase();
+                const elem = document.getElementById('switchStateDisplay');
+                elem.innerText = data.switchState;
+                elem.className = 'status-val ' + data.switchState.toLowerCase();
 
                 document.getElementById('wifiRssi').innerText = data.wifiRssi + ' dBm';
                 document.getElementById('ipAddr').innerText = data.ipAddress;
@@ -373,7 +373,7 @@ String EmbeddedWebServer::getDashboardHTML() {
             } catch(e) {}
         }
 
-        async function controlPump(action) {
+        async function controlSwitch(action) {
             await fetch('/api/' + action, { method: 'POST' });
             setTimeout(fetchStatus, 600);
         }

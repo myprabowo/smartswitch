@@ -20,7 +20,7 @@ flowchart TD
     InitTuya --> ConnectWiFi{Saved WiFi Credentials?}
     
     ConnectWiFi -- Found --> TryConnect[Connect to Saved WiFi]
-    ConnectWiFi -- None --> LaunchAP[Launch Captive Portal: PumpRemoteSetup]
+    ConnectWiFi -- None --> LaunchAP[Launch Captive Portal: RemoteSwitchSetup]
     
     TryConnect --> WiFiSuccess{Connected?}
     WiFiSuccess -- Yes --> StartWeb[Start Web Server & REST API]

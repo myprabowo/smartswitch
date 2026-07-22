@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_LED_H
-#define PUMP_REMOTE_LED_H
+#ifndef REMOTE_SWITCH_LED_H
+#define REMOTE_SWITCH_LED_H
 
 #include <Arduino.h>
 #include "config.h"
@@ -68,4 +68,4 @@ private:
 
 extern LedController ledController;
 
-#endif // PUMP_REMOTE_LED_H
+#endif // REMOTE_SWITCH_LED_H

@@ -13,7 +13,7 @@ Use this verification checklist to validate every firmware release prior to depl
 ---
 
 ## 2. WiFi & Provisioning Test Suite
-- [ ] **First-Boot Provisioning**: Erase flash via `esptool.py erase_flash` -> Verify `PumpRemoteSetup` AP appears on phone.
+- [ ] **First-Boot Provisioning**: Erase flash via `esptool.py erase_flash` -> Verify `RemoteSwitchSetup` AP appears on phone.
 - [ ] **Captive Portal Test**: Connect to AP -> Verify captive portal opens automatically to `192.168.4.1` -> Save credentials -> Verify connection.
 - [ ] **Auto-Reconnect Test**: Power off WiFi router -> Verify LED switches to slow blink -> Power on router -> Verify auto-reconnect without reboot within 15 seconds.
 - [ ] **Provisioning Wipe Test**: Press and hold BOOT button for `> 8 seconds` -> Verify WiFi credentials erased and AP re-opens.
@@ -38,8 +38,8 @@ Use this verification checklist to validate every firmware release prior to depl
 ---
 
 ## 5. Web Server & REST API Verification
-- [ ] Open `http://pumpremote.local` in browser -> Verify SPA dashboard loads dark theme.
-- [ ] Send `GET /api/status` -> Verify JSON contains valid `pumpState`, `wifiRssi`, and `tokenStatus`.
+- [ ] Open `http://remoteswitch.local` in browser -> Verify SPA dashboard loads dark theme.
+- [ ] Send `GET /api/status` -> Verify JSON contains valid `switchState`, `wifiRssi`, and `tokenStatus`.
 - [ ] Send `POST /api/toggle` via cURL / Postman -> Verify target switch toggles and returns `200 OK`.
 - [ ] Inspect Live System Logs section -> Verify 60s health pulse entries appear continuously.
 

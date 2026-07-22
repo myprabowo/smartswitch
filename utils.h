@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_UTILS_H
-#define PUMP_REMOTE_UTILS_H
+#ifndef REMOTE_SWITCH_UTILS_H
+#define REMOTE_SWITCH_UTILS_H
 
 #include <Arduino.h>
 #include <esp_system.h>
@@ -52,4 +52,4 @@ String sanitizeJsonString(const String& input);
 
 } // namespace Utils
 
-#endif // PUMP_REMOTE_UTILS_H
+#endif // REMOTE_SWITCH_UTILS_H

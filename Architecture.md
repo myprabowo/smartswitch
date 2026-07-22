@@ -66,7 +66,7 @@ The system operates across 10 distinct state machine states:
 
 ### State Definitions
 1. **`STATE_BOOT`**: Power-on initialization, hardware setup, NVS reading, self-diagnostics.
-2. **`STATE_CONNECTING_WIFI`**: Connecting to saved AP or running captive portal server (`PumpRemoteSetup`).
+2. **`STATE_CONNECTING_WIFI`**: Connecting to saved AP or running captive portal server (`RemoteSwitchSetup`).
 3. **`STATE_CONNECTED`**: WiFi link established, mDNS registered.
 4. **`STATE_GETTING_TOKEN`**: Requesting or renewing Tuya OAuth2.0 access token via HTTPS.
 5. **`STATE_READY`**: Idle operational state listening for physical button events and web API calls.

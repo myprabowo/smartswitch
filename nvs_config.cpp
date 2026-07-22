@@ -28,7 +28,7 @@ void NVSConfigManager::loadDefaults() {
 }
 
 void NVSConfigManager::begin() {
-    _prefs.begin("pump_cfg", false);
+    _prefs.begin("switch_cfg", false);
 
     _config.deviceName       = _prefs.getString("dev_name", DEFAULT_DEVICE_NAME);
     _config.hostname         = _prefs.getString("hostname", DEFAULT_HOSTNAME);
@@ -49,7 +49,7 @@ void NVSConfigManager::begin() {
 
 bool NVSConfigManager::saveConfig(const SystemConfig& config) {
     _config = config;
-    _prefs.begin("pump_cfg", false);
+    _prefs.begin("switch_cfg", false);
     _prefs.putString("dev_name", _config.deviceName);
     _prefs.putString("hostname", _config.hostname);
     _prefs.putString("ota_pwd", _config.otaPassword);
@@ -73,7 +73,7 @@ void NVSConfigManager::setTuyaCredentials(const String& accessId, const String& 
 }
 
 uint32_t NVSConfigManager::incrementBootCount() {
-    _prefs.begin("pump_cfg", false);
+    _prefs.begin("switch_cfg", false);
     _bootCount++;
     _consecutiveCrashes++;
     _prefs.putUInt("boot_cnt", _bootCount);
@@ -84,7 +84,7 @@ uint32_t NVSConfigManager::incrementBootCount() {
 
 void NVSConfigManager::clearConsecutiveCrashes() {
     _consecutiveCrashes = 0;
-    _prefs.begin("pump_cfg", false);
+    _prefs.begin("switch_cfg", false);
     _prefs.putUInt("crash_cnt", 0);
     _prefs.end();
 }
@@ -94,7 +94,7 @@ uint32_t NVSConfigManager::getConsecutiveCrashes() {
 }
 
 void NVSConfigManager::factoryReset() {
-    _prefs.begin("pump_cfg", false);
+    _prefs.begin("switch_cfg", false);
     _prefs.clear();
     _prefs.end();
     loadDefaults();

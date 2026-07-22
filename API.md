@@ -2,7 +2,7 @@
 
 The ESP32-C3 Super Mini Tuya Remote Controller provides a complete JSON REST API on port `80`.
 
-**Base URL**: `http://pumpremote.local` or `http://<device-ip>`
+**Base URL**: `http://remoteswitch.local` or `http://<device-ip>`
 
 ---
 
@@ -26,18 +26,18 @@ The ESP32-C3 Super Mini Tuya Remote Controller provides a complete JSON REST API
 ## Detailed Endpoint Documentation
 
 ### 1. `GET /api/status`
-Returns real-time system telemetry and pump switch status.
+Returns real-time system telemetry and switch status.
 
 **Sample Response**:
 ```json
 {
-  "deviceName": "Pump Controller Remote",
-  "hostname": "PumpRemote",
+  "deviceName": "Remote Switch Controller",
+  "hostname": "RemoteSwitch",
   "firmware": "1.0.0",
   "uptime": "00h 42m 15s",
   "uptimeMs": 2535000,
-  "pumpState": "OFF",
-  "pumpStateBool": false,
+  "switchState": "OFF",
+  "switchStateBool": false,
   "wifiRssi": -58,
   "ipAddress": "192.168.1.105",
   "macAddress": "74:4D:BD:12:34:56",
@@ -60,7 +60,7 @@ Toggles switch state using current status query.
 {
   "success": true,
   "newState": "ON",
-  "message": "Pump toggled to ON"
+  "message": "Switch toggled to ON"
 }
 ```
 
@@ -74,7 +74,7 @@ Forces switch state to ON.
 {
   "success": true,
   "newState": "ON",
-  "message": "Pump turned ON successfully"
+  "message": "Switch turned ON successfully"
 }
 ```
 
@@ -88,7 +88,7 @@ Forces switch state to OFF.
 {
   "success": true,
   "newState": "OFF",
-  "message": "Pump turned OFF successfully"
+  "message": "Switch turned OFF successfully"
 }
 ```
 

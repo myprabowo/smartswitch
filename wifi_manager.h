@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_WIFI_MANAGER_H
-#define PUMP_REMOTE_WIFI_MANAGER_H
+#ifndef REMOTE_SWITCH_WIFI_MANAGER_H
+#define REMOTE_SWITCH_WIFI_MANAGER_H
 
 #include <Arduino.h>
 #include <WiFi.h>
@@ -73,4 +73,4 @@ private:
 
 extern CustomWiFiManager customWiFiManager;
 
-#endif // PUMP_REMOTE_WIFI_MANAGER_H
+#endif // REMOTE_SWITCH_WIFI_MANAGER_H

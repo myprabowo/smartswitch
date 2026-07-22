@@ -242,7 +242,7 @@ TuyaCommandResult TuyaApiClient::setSwitchStatus(bool turnOn) {
     serializeJson(bodyDoc, bodyStr);
 
     Serial.println("Sending Command...");
-    Serial.println("Pump " + String(turnOn ? "ON" : "OFF"));
+    Serial.println("Switch " + String(turnOn ? "ON" : "OFF"));
 
     String responsePayload = "";
     TuyaCommandResult res = executeHttpRequest("POST", urlPath, bodyStr, responsePayload);
@@ -263,7 +263,7 @@ TuyaCommandResult TuyaApiClient::setSwitchStatus(bool turnOn) {
         return TUYA_ERR_DEVICE_OFFLINE;
     }
 
-    _lastResponseMessage = "Command Sent: Pump " + String(turnOn ? "ON" : "OFF");
+    _lastResponseMessage = "Command Sent: Switch " + String(turnOn ? "ON" : "OFF");
     Serial.println("Success.");
     return TUYA_SUCCESS;
 }

@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_HEALTH_MONITOR_H
-#define PUMP_REMOTE_HEALTH_MONITOR_H
+#ifndef REMOTE_SWITCH_HEALTH_MONITOR_H
+#define REMOTE_SWITCH_HEALTH_MONITOR_H
 
 #include <Arduino.h>
 #include <esp_system.h>
@@ -87,4 +87,4 @@ private:
 
 extern HealthMonitor healthMonitor;
 
-#endif // PUMP_REMOTE_HEALTH_MONITOR_H
+#endif // REMOTE_SWITCH_HEALTH_MONITOR_H

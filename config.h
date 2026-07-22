@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_CONFIG_H
-#define PUMP_REMOTE_CONFIG_H
+#ifndef REMOTE_SWITCH_CONFIG_H
+#define REMOTE_SWITCH_CONFIG_H
 
 #include <Arduino.h>
 
@@ -15,9 +15,9 @@
 // ==========================================
 #define FIRMWARE_VERSION       "1.0.0"
 #define HARDWARE_MODEL         "ESP32-C3 Super Mini"
-#define DEFAULT_HOSTNAME       "PumpRemote"
-#define DEFAULT_DEVICE_NAME    "Pump Controller Remote"
-#define DEFAULT_AP_SSID        "PumpRemoteSetup"
+#define DEFAULT_HOSTNAME       "RemoteSwitch"
+#define DEFAULT_DEVICE_NAME    "Remote Switch Controller"
+#define DEFAULT_AP_SSID        "RemoteSwitchSetup"
 #define DEFAULT_AP_PASSWORD    "" // Open AP for initial captive portal
 #define DEFAULT_OTA_PASSWORD   "admin123"
 
@@ -105,4 +105,4 @@ enum LogLevel {
 #define DEFAULT_GMT_OFFSET_SEC (7 * 3600) // UTC+7 default (Jakarta/Asia)
 #define DEFAULT_DAYLIGHT_OFFSET 0
 
-#endif // PUMP_REMOTE_CONFIG_H
+#endif // REMOTE_SWITCH_CONFIG_H

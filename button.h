@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_BUTTON_H
-#define PUMP_REMOTE_BUTTON_H
+#ifndef REMOTE_SWITCH_BUTTON_H
+#define REMOTE_SWITCH_BUTTON_H
 
 #include <Arduino.h>
 #include "config.h"
@@ -65,4 +65,4 @@ private:
 
 extern ButtonHandler buttonHandler;
 
-#endif // PUMP_REMOTE_BUTTON_H
+#endif // REMOTE_SWITCH_BUTTON_H

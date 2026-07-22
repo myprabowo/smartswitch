@@ -89,7 +89,7 @@ void setup() {
     if (customWiFiManager.isConnected()) {
         bool initialStatus = false;
         if (tuyaApiClient.getSwitchStatus(initialStatus) == TUYA_SUCCESS) {
-            embeddedWebServer.setCachedPumpState(initialStatus);
+            embeddedWebServer.setCachedSwitchState(initialStatus);
         }
     }
 }
@@ -97,7 +97,6 @@ void setup() {
 void loop() {
     // Master Non-Blocking Execution Loop
     scheduler.update();
-    buttonHandler.update();
     ledController.update();
     systemFSM.update();
     embeddedWebServer.update();
@@ -150,7 +149,7 @@ void handleTuyaShortPress() {
     TuyaCommandResult res = tuyaApiClient.toggleSwitch(newState);
 
     if (res == TUYA_SUCCESS) {
-        embeddedWebServer.setCachedPumpState(newState);
+        embeddedWebServer.setCachedSwitchState(newState);
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
         systemFSM.transitionTo(STATE_READY);
     } else {
@@ -165,7 +164,7 @@ void handleTuyaForceOn() {
     TuyaCommandResult res = tuyaApiClient.setSwitchStatus(true);
 
     if (res == TUYA_SUCCESS) {
-        embeddedWebServer.setCachedPumpState(true);
+        embeddedWebServer.setCachedSwitchState(true);
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
         systemFSM.transitionTo(STATE_READY);
     } else {
@@ -180,7 +179,7 @@ void handleTuyaForceOff() {
     TuyaCommandResult res = tuyaApiClient.setSwitchStatus(false);
 
     if (res == TUYA_SUCCESS) {
-        embeddedWebServer.setCachedPumpState(false);
+        embeddedWebServer.setCachedSwitchState(false);
         ledController.setPattern(LED_PATTERN_ONE_LONG_BLINK);
         systemFSM.transitionTo(STATE_READY);
     } else {

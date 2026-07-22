@@ -5,8 +5,8 @@
  * @version 1.0.0
  */
 
-#ifndef PUMP_REMOTE_NTP_MANAGER_H
-#define PUMP_REMOTE_NTP_MANAGER_H
+#ifndef REMOTE_SWITCH_NTP_MANAGER_H
+#define REMOTE_SWITCH_NTP_MANAGER_H
 
 #include <Arduino.h>
 #include <time.h>
@@ -44,4 +44,4 @@ private:
 
 extern NTPManager ntpManager;
 
-#endif // PUMP_REMOTE_NTP_MANAGER_H
+#endif // REMOTE_SWITCH_NTP_MANAGER_H
