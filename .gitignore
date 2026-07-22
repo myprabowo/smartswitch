@@ -1,9 +1,14 @@
-# OS generated files
+# macOS generated files & custom directory icons
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+Icon
+Icon?
+Icon*
+Icon[rR]
+Icon$'\r'
 ehthumbs.db
 Thumbs.db
 
@@ -12,12 +17,18 @@ build/
 *.bin
 *.elf
 *.hex
+*.map
+*.o
 
-# IDE files
+# IDE & Tooling Metadata
 .vscode/
 .idea/
+.gemini/
+.brain/
+.agents/
 *.swp
 *.swo
 
 # Temporary scratch & log files
 *.log
+*.tmp
