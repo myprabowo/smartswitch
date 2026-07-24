@@ -9,6 +9,7 @@
 #define REMOTE_SWITCH_TUYA_API_H
 
 #include <Arduino.h>
+#include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
