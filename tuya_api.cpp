@@ -197,11 +197,12 @@ TuyaCommandResult TuyaApiClient::getSwitchStatus(bool& currentState) {
     bool success = doc["success"] | false;
     if (!success) {
         int code = doc["code"] | -1;
+        String msg = doc["msg"] | "";
         if (code == 1010 || code == 1004) { // Token invalid or expired
             _accessToken = "";
             return TUYA_ERR_TOKEN_EXPIRED;
         }
-        _lastResponseMessage = "Tuya Query Error Code " + String(code);
+        _lastResponseMessage = "Tuya Query Error Code " + String(code) + (msg.length() > 0 ? ": " + msg : "");
         return TUYA_ERR_DEVICE_OFFLINE;
     }
 
