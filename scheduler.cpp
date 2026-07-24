@@ -19,7 +19,10 @@ void TaskScheduler::begin() {
         .idle_core_mask = (1 << 0),
         .trigger_panic = true
     };
-    esp_task_wdt_init(&wdt_config);
+    esp_err_t err = esp_task_wdt_init(&wdt_config);
+    if (err == ESP_ERR_INVALID_STATE) {
+        esp_task_wdt_reconfigure(&wdt_config);
+    }
     esp_task_wdt_add(NULL);
 #else
     esp_task_wdt_init(WDT_TIMEOUT_SECONDS, true);
