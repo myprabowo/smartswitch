@@ -151,7 +151,12 @@ void SystemFSM::onUpdate(SystemState state) {
             break;
 
         case STATE_SAFE_MODE:
-            // In safe mode, AP remains active for recovery
+            // In safe mode, if WiFi is stably connected, auto-recover to READY state
+            if (customWiFiManager.isConnected() && (millis() - _stateEntryMs > 5000)) {
+                healthMonitor.logInfo("Safe Mode: WiFi stable, auto-recovering to READY state.");
+                nvsConfigManager.clearConsecutiveCrashes();
+                transitionTo(STATE_READY);
+            }
             break;
 
         case STATE_FACTORY_RESET:
