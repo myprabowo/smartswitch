@@ -59,8 +59,9 @@ Production-grade, commercial-quality Arduino IDE firmware for the **ESP32-C3 Sup
    ```
 3. Open `Tools -> Board -> Boards Manager`, search for `esp32` by Espressif Systems, and install version `2.0.14` or later (or `3.x`).
 4. Select target board: `ESP32C3 Dev Module` or `XIAO_ESP32C3`.
-   - **Flash Mode**: QIO 80MHz
-   - **Flash Size**: 4MB
+   - **USB CDC On Boot**: `Enabled` (Crucial for ESP32-C3 USB Serial Monitor output)
+   - **Flash Mode**: `DIO 40MHz` or `QIO 80MHz`
+   - **Flash Size**: `4MB`
    - **Partition Scheme**: `Minimal SPIFFS (1.9MB APP with OTA)` or `Huge APP (3MB No OTA)`
 
 ### 2. Installing Required Libraries
