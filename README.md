@@ -61,7 +61,7 @@ Production-grade, commercial-quality Arduino IDE firmware for the **ESP32-C3 Sup
 4. Select target board: `ESP32C3 Dev Module` or `XIAO_ESP32C3`.
    - **Flash Mode**: QIO 80MHz
    - **Flash Size**: 4MB
-   - **Partition Scheme**: Default 4MB with spiffs/nvs
+   - **Partition Scheme**: `Minimal SPIFFS (1.9MB APP with OTA)` or `Huge APP (3MB No OTA)`
 
 ### 2. Installing Required Libraries
 Install the following libraries via `Tools -> Manage Libraries`:
