@@ -85,6 +85,18 @@ Install the following libraries via `Tools -> Manage Libraries`:
    - **China**: `https://openapi.tuyacn.com`
    - **India**: `https://openapi.tuyain.com`
 
+### 4. Opening & Uploading Code to ESP32-C3 Board
+1. Connect your **ESP32-C3 Super Mini** to your PC/Mac using a **USB-C Data Cable**.
+2. Open **Arduino IDE 2.x**.
+3. Select **File -> Open...** and choose file [Switch.ino](file:///Users/muhammadyogaprabowo/Documents/01%20PROJECTS/IOT/Switch/Switch.ino) inside the `Switch` project folder. Arduino IDE will automatically load `Switch.ino` and all related `.cpp` and `.h` files into tabs.
+4. Select Port & Board:
+   - Go to **Tools -> Port** (Pilih Port Serial COM / `/dev/cu.usbmodem...` yang muncul saat ESP32-C3 dicolok).
+   - Go to **Tools -> Board -> ESP32 Arduino -> ESP32C3 Dev Module**.
+   - *(Tips: Jika Port tidak terdeteksi, tahan tombol **BOOT (GPIO9)** pada board sambil mencolokkan kabel USB ke PC).*
+5. Click **Verify** (Tombol `✓` di kiri atas) untuk kompilasi kode dan memastikan tidak ada error library.
+6. Click **Upload** (Tombol Panah `➔` di kiri atas) untuk mengunggah source code ke board ESP32-C3.
+7. Buka **Tools -> Serial Monitor** (set Baudrate ke **`115200`**) untuk melihat status log saat board pertama kali booting.
+
 ---
 
 ## WiFi Provisioning & Initial Configuration
