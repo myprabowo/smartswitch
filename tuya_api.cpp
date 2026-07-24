@@ -18,13 +18,13 @@ void TuyaApiClient::begin() {
     _client.setTimeout(HTTP_TIMEOUT_MS / 1000);
 }
 
-unsigned long TuyaApiClient::getTimestampMs() {
+uint64_t TuyaApiClient::getTimestampMs() {
     time_t nowSec = time(nullptr);
     if (nowSec > 1000000000) {
-        return ((unsigned long) nowSec) * 1000UL;
+        return ((uint64_t) nowSec) * 1000ULL;
     }
     // Fallback if NTP time is not synced yet
-    return 1700000000000UL + millis();
+    return 1700000000000ULL + (uint64_t)millis();
 }
 
 bool TuyaApiClient::isTokenValid() const {
@@ -86,7 +86,9 @@ TuyaCommandResult TuyaApiClient::executeHttpRequest(const String& method, const 
 
     http.setTimeout(HTTP_TIMEOUT_MS);
 
-    String tStr = String(getTimestampMs());
+    char tBuf[32];
+    snprintf(tBuf, sizeof(tBuf), "%llu", (unsigned long long)getTimestampMs());
+    String tStr = String(tBuf);
     bool useToken = (urlPath.indexOf("/v1.0/token") < 0);
     String signStr = generateSign(method, urlPath, body, tStr, useToken);
 

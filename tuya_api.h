@@ -93,7 +93,7 @@ private:
     int _lastHttpStatusCode;
 
     String generateSign(const String& method, const String& urlPath, const String& body, const String& t, bool useToken);
-    unsigned long getTimestampMs();
+    uint64_t getTimestampMs();
     TuyaCommandResult executeHttpRequest(const String& method, const String& urlPath, const String& body, String& responseOut);
 };
 
