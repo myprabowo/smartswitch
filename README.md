@@ -90,12 +90,12 @@ Install the following libraries via `Tools -> Manage Libraries`:
 2. Open **Arduino IDE 2.x**.
 3. Select **File -> Open...** and choose file [Switch.ino](file:///Users/muhammadyogaprabowo/Documents/01%20PROJECTS/IOT/Switch/Switch.ino) inside the `Switch` project folder. Arduino IDE will automatically load `Switch.ino` and all related `.cpp` and `.h` files into tabs.
 4. Select Port & Board:
-   - Go to **Tools -> Port** (Pilih Port Serial COM / `/dev/cu.usbmodem...` yang muncul saat ESP32-C3 dicolok).
+   - Go to **Tools -> Port** (Select Serial COM Port / `/dev/cu.usbmodem...` that appears when the ESP32-C3 is plugged in).
    - Go to **Tools -> Board -> ESP32 Arduino -> ESP32C3 Dev Module**.
-   - *(Tips: Jika Port tidak terdeteksi, tahan tombol **BOOT (GPIO9)** pada board sambil mencolokkan kabel USB ke PC).*
-5. Click **Verify** (Tombol `✓` di kiri atas) untuk kompilasi kode dan memastikan tidak ada error library.
-6. Click **Upload** (Tombol Panah `➔` di kiri atas) untuk mengunggah source code ke board ESP32-C3.
-7. Buka **Tools -> Serial Monitor** (set Baudrate ke **`115200`**) untuk melihat status log saat board pertama kali booting.
+   - *(Tip: If the port is not detected, press and hold the **BOOT (GPIO9)** button on the board while connecting the USB cable to your computer).*
+5. Click **Verify** (`✓` button in the top-left) to compile the code and ensure there are no library errors.
+6. Click **Upload** (`➔` button in the top-left) to upload the source code to the ESP32-C3 board.
+7. Open **Tools -> Serial Monitor** (set Baudrate to **`115200`**) to view system status logs during board startup.
 
 ---
 
