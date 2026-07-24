@@ -121,6 +121,10 @@ void SystemFSM::onUpdate(SystemState state) {
             break;
 
         case STATE_GETTING_TOKEN:
+            ntpManager.update();
+            if (!ntpManager.isSynced() && (millis() - _stateEntryMs < 3000)) {
+                break; // Wait up to 3s for NTP sync packet to arrive
+            }
             if (tuyaApiClient.refreshAccessToken() == TUYA_SUCCESS) {
                 transitionTo(STATE_READY);
             } else {

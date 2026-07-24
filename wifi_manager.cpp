@@ -6,6 +6,7 @@
  */
 
 #include "wifi_manager.h"
+#include "ntp_manager.h"
 
 CustomWiFiManager customWiFiManager;
 
@@ -65,6 +66,7 @@ bool CustomWiFiManager::begin(bool forceAP) {
     Serial.println(WiFi.localIP().toString());
 
     setupMDNS();
+    ntpManager.begin();
     return true;
 }
 
